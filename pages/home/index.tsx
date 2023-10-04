@@ -4,17 +4,18 @@ import { useState } from "react"
 import Pagination from '@/components/Pagination'
 import {paginate} from '@/helper/paginate'
 import Wrapper from '@/components/Wrapper'
+import styles from './home.module.scss'
 
   export const getStaticProps:GetStaticProps= async()=>{
-const req = await dataBase
-/// requsting the response 
+const req = //response
+await dataBase//request
     return{
         props:{
            req
         }
     }
 }
-
+///importing the response
   function JournalEntryList<getStaticProps>  (req:any){
     const [currentPage,setCurrentPage] = useState(1)
     const pageSize = 5
@@ -35,7 +36,7 @@ const req = await dataBase
         console.log("items",items)
     console.log("request",req)
     console.log("entries",entries)
-    return(<Wrapper><div>
+    return(<Wrapper><div className={styles.container}>
 {paginatedPosts.map((value:any|any[])=>{
   
 const node = value.id

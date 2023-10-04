@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Control,useFieldArray, useForm,useWatch } from "react-hook-form";
 import data from '@/mock-server/data.json'
+import styles from './addEntry.module.scss'
 type FormValues = {
     topic:{
       
@@ -63,7 +64,6 @@ export default function AddEntry(){
 onSubmit={(data)=>{
 console.log("Submit data",data);
 }}>
-   <Input {...register(`topic.${renderCount}.entryTitle`,{required:true})} />
             <input {...register(`topic.${renderCount}.entryTitle`,{required:true})}
           
             placeholder="Enter title"
