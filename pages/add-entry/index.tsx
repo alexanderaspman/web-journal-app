@@ -14,7 +14,7 @@ type FormValues = {
 }
 
 
-let renderCount = 0;
+let renderCount = data.data.topic.length;
 
 
 
@@ -53,7 +53,7 @@ export default function AddEntry(){
         control,
     })
     const onSubmit = async (data:any)=>{await sleep(1000)}
-    renderCount =  data.data.topic.length + 1
+    renderCount++
     console.log("errors",errors)
 
 
