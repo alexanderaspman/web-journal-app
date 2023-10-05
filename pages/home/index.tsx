@@ -6,6 +6,7 @@ import {paginate} from '@/helper/paginate'
 import Wrapper from '@/components/Wrapper'
 import styles from './home.module.scss'
 import Link from "next/link"
+import TrashButton from "@/assets/deletButton"
 interface Data{
     id:number
     entryTitle:string
@@ -36,9 +37,7 @@ await dataBase//request
     const deleteObject = (id: number) => {
         const updatedData = entries.filter((item:any) => item.id !== id);
         setEntries(updatedData);
-    
-       
-      };
+    };
     
    
     const items = entries.length

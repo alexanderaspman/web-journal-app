@@ -67,7 +67,7 @@ console.log("Submit data",data);
             <input {...register(`topic.${renderCount}.entryTitle`,{required:true})}
           
             placeholder="Enter title"
-            />
+            /><br/>
               <input {...register(`topic.${renderCount}.context`,{required:true})}
               placeholder="Enter your journal entry"
               />

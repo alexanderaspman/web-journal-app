@@ -45,27 +45,24 @@ export async function getServerSideProps(context:any) {
     const response = useState<any>( paragraphs)
 const title = paragraphs.entryTitle
 const context = paragraphs.context
+const id = paragraphs.id
     console.log(paragraphs)
     console.log("data")
     return (
       <div>
-      <main>
-     <div className={styles.hero_img }></div>
-      <div className={styles.container}>
-        <div className={"row-80"}>
-          <section>
-            <h1>{title}</h1>
-            
-          </section>
-        </div>
-        <section className={styles.context}>
-          <div className='flex flex-row gap-y-0.5 gap-x-10'>
-            {context}
-       </div>
-        </section>
-      
-        
-        </div>
+      <main >
+        <button>back</button>
+      <div className={styles.item} style={{height:"60%"}}>
+
+<div className={styles.item__header}>
+<h2>
+    {title}
+ </h2>
+    <span >{id}</span>
+</div>
+<div className={styles.item__content_big}>{context}</div>
+
+</div>
         </main>
         </div>
         )
