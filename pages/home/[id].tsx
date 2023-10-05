@@ -26,12 +26,12 @@ export async function getServerSideProps(context:any) {
     await dataBase//request
         
 
-  const id = context.query.id // Get ID from slug `/book/1`
-  const paragraphs = req.data.topic[id]
+  const id = context.query.id 
+  const paragraphs = req.data.topic[id-1]
   
 
-  // If routing to `/book/1?name=some-book`
-  console.log(context.query) // Outputs: `{ id: '1', name: 'some-book' }`
+  
+  console.log(context.query)
   return{
     props:{
         paragraphs
@@ -73,40 +73,3 @@ const context = paragraphs.context
   export default Home
 
 
-
-
-  /*
-
-
-{project.map((value:any|[])=>{
-          return(<p className={styles.preamble}>{value}<br/></p>)
-        })}
-
-
-
- {images.map((value:any|[])=>{
-          return(<div><img src={value.url}/></div> )
-        })}
-
-
-
-  export async function getStaticPaths<GetStaticPaths>() {
-    const req = data
-    const res = req.data as any
-        const paths = res.map((value:any|[]) =>({
-      params: {id: value.data.toString()},
-  }))
-      return {
-   
-     paths,
-     fallback: false
-     // with i18n configured the locale for the path can be returned as well
-      
-      // See the "paths" section below       { params: {id:1, language: "en", slug: 'category-slug-1' } },
-
-    
-
-     // false or "blocking"
-  }
-}
-   */
