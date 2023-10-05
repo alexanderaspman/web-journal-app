@@ -1,5 +1,4 @@
 import { Html, Head, Main, NextScript } from 'next/document'
-import styles from './document.module.scss'
 
 export default function Document() {
   return (

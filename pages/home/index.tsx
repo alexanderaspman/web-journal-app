@@ -5,6 +5,7 @@ import Pagination from '@/components/Pagination'
 import {paginate} from '@/helper/paginate'
 import Wrapper from '@/components/Wrapper'
 import styles from './home.module.scss'
+import Link from "next/link"
 
   export const getStaticProps:GetStaticProps= async()=>{
 const req = //response
@@ -44,13 +45,21 @@ const entryTitle = value.entryTitle
 const context = value.context
 console.log("entryTitle",entryTitle)
 
-return(<div key={node} style={{backgroundColor:"grey"}}>
-    <div style={{backgroundColor:"yellow", padding: 20,margin:15}}>{entryTitle} {node}</div>
-    <div style={{backgroundColor:"red"}}>{context}</div>
+
+return(<div key={node} className={styles.item}>
+
+        <div className={styles.item__header}>
+        <h2>
+        <Link href={`home/${node}`}><a>{entryTitle} </a> </Link> 
+         </h2>
+            <span>{node}</span>
+        </div>
+        <div className={styles.item__content}>{context}</div>
     
     </div>)
 
 })}
+
 <Pagination 
 items={items}
 currentPage={currentPage}
