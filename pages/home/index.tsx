@@ -6,7 +6,7 @@ import {paginate} from '@/helper/paginate'
 import Wrapper from '@/components/Wrapper'
 import styles from './home.module.scss'
 import Link from "next/link"
-import TrashButton from "@/assets/deletButton"
+import Trash from "@/assets/deletButton"
 interface Data{
     id:number
     entryTitle:string
@@ -64,7 +64,7 @@ return(<div key={node} className={styles.item}>
             {entryTitle}
         </Link> 
          </h2>
-            <span onClick={()=>deleteObject(node)}>{node}</span>
+            <span onClick={()=>deleteObject(node)}><Trash/></span>
         </div>
         <div className={styles.item__content}>{context}</div>
   
@@ -81,7 +81,7 @@ currentPage={currentPage}
 pageSize={pageSize} 
 onPageChange={onPageChange}
 /> 
-<span className="justify-end"><button>add entry</button></span></div>
+<span className="justify-self-end"><button>add entry</button></span></div>
 </div></Wrapper>)
 }
 export default JournalEntryList
