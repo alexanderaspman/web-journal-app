@@ -67,18 +67,21 @@ return(<div key={node} className={styles.item}>
             <span onClick={()=>deleteObject(node)}>{node}</span>
         </div>
         <div className={styles.item__content}>{context}</div>
-    
+  
     </div>)
 
 })}
+ 
 
+    </div> <div className={styles.footer}>
+        <div className="flex flexDirection-row row">
 <Pagination 
 items={items}
 currentPage={currentPage}
 pageSize={pageSize} 
 onPageChange={onPageChange}
-/>
-
-    </div></Wrapper>)
+/> 
+<span className="justify-end"><button>add entry</button></span></div>
+</div></Wrapper>)
 }
 export default JournalEntryList
