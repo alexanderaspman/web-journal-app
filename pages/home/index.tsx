@@ -6,6 +6,11 @@ import {paginate} from '@/helper/paginate'
 import Wrapper from '@/components/Wrapper'
 import styles from './home.module.scss'
 import Link from "next/link"
+interface Data{
+    id:number
+    entryTitle:string
+    context:string
+}
 
   export const getStaticProps:GetStaticProps= async()=>{
 const req = //response
@@ -26,9 +31,15 @@ await dataBase//request
 
 
 
-    const [res,setRes]:any|any[] = useState( req)
-    const entries:any|[] = res.req.data.topic
-   
+    const [res,setRes]:any = useState<Data[]>( req)
+    const [entries,setEntries]:any|[] = useState(res.req.data.topic)
+    const deleteObject = (id: number) => {
+        const updatedData = entries.filter((item:any) => item.id !== id);
+        setEntries(updatedData);
+    
+       
+      };
+    
    
     const items = entries.length
     const paginatedPosts = paginate(entries, currentPage, pageSize);
@@ -50,9 +61,11 @@ return(<div key={node} className={styles.item}>
 
         <div className={styles.item__header}>
         <h2>
-        <Link href={`home/${node}`}><a>{entryTitle} </a> </Link> 
+        <Link href={`home/${node}`}>
+            {entryTitle}
+        </Link> 
          </h2>
-            <span>{node}</span>
+            <span onClick={()=>deleteObject(node)}>{node}</span>
         </div>
         <div className={styles.item__content}>{context}</div>
     
