@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import styles from './add.module.scss'
 interface Topic {
   id: number;
   entryTitel: string;
