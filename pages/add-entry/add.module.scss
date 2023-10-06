@@ -1,0 +1,41 @@
+$color-success: #40A557;
+
+.container {
+    max-width: 1038px;
+    margin: 0 auto;
+    background-color: #C66E6E;
+    height: 100vh;
+
+
+}
+
+.heading__light {
+    color: #ffffff;
+  }
+
+.form__row {
+    margin-bottom: 16px;
+    label {
+        margin-bottom: 4px;
+        display: block;
+        color: #ffffff;
+    }
+    input, textarea {
+        padding: 8px;
+    }
+    input {
+        width: auto;
+    }
+    textarea {
+        width: 100%;
+    }
+}
+
+.button__add {
+    background-color: $color-success;
+    font-size: 2rem;
+    padding: 16px 24px;
+    font-weight: 700;
+    color: #133C21;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2), 0 2px 2px 0 rgba(0,0,0,0.19);
+}

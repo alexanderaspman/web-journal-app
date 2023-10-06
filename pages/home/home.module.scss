@@ -6,6 +6,7 @@ $color-secondary: #E8BBBB;
 .container {
     max-width: 1038px;
     margin: 0 auto;
+    padding: 0 16px 60px 16px;
 }
 
 .item {
@@ -45,8 +46,8 @@ $color-secondary: #E8BBBB;
 .footer {
   
     flex-direction: row;
-    background-color: aqua;
-    height: 40px;
+    background-color: #638FFF;
+    height: 55px;
     position: fixed;
     width: 100%;
     bottom:0px

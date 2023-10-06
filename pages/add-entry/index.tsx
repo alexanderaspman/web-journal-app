@@ -1,80 +1,70 @@
-import { useEffect, useState } from "react";
-import { Control,useFieldArray, useForm,useWatch } from "react-hook-form";
-import data from '@/mock-server/data.json'
-import styles from './addEntry.module.scss'
-type FormValues = {
-    topic:{
-      
-            
-        entryTitle:'',
-         context:'',
-     }[]
-     
- 
+import React, { useState } from 'react';
+import styles from './add.module.scss'
+interface Topic {
+  id: number;
+  entryTitel: string;
+  context: string;
 }
 
+const JournalForm  = () => {
+  const [title, setTitle] = useState<string>('');
+  const [description, setDescription] = useState<string>('');
+  const [topics, setTopics] = useState<Topic[]>([]);
 
-let renderCount = 0;
+  const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setTitle(event.target.value);
+  };
 
+  const handleDescriptionChange = (event: any) => {
+    setDescription(event.target.value);
+  };
 
+  const handleAddTopic = () => {
+    const newTopic: Topic = {
+      id: topics.length + 1,
+      entryTitel: title,
+      context: description
+    };
+    setTopics([...topics, newTopic]);
+    setTitle('');
+    setDescription('');
+  };
 
-const Input = (props:any) =>{
-    const [value,setValue]=useState(props.value||"")
-    return(
-        <input 
-        name={props.entryTitle}
-        onChange={(e)=>{setValue(e.target.value);
-        props.onChange && props.onChange(e);
-    }}
-    value={value}
-        />
-    )
-}
-
-
-export default function AddEntry(){
-
-    //this will set the query string parameters to topic.entryTitel and topic.context
-    const {register,handleSubmit,control,formState,formState:{errors}} = useForm<FormValues>({
-        mode:"onChange",
-        defaultValues:{
-        topic:[{
-      
-            
-               entryTitle:'',
-                context:'',
-            }]
-            
-        
-    }});
-  
-    const {fields}=useFieldArray({
-        entryTitle:'topic',
-        control,
-    })
-    const onSubmit = async (data:any)=>{await sleep(1000)}
-    renderCount =  data.data.topic.length + 1
-    console.log("errors",errors)
-
-
-    return(
-        <div>
-           
-<form 
-onSubmit={(data)=>{
-console.log("Submit data",data);
+  return (
+    <div className={styles.container}>
+      <h1 className={styles.heading__light}>Add journal</h1><div style={{backgroundColor:"#B26161",    padding:" 0 16px 16px 16px"
 }}>
-            <input {...register(`topic.${renderCount}.entryTitle`,{required:true})}
-          
-            placeholder="Enter title"
-            /><br/>
-              <input {...register(`topic.${renderCount}.context`,{required:true})}
-              placeholder="Enter your journal entry"
-              />
-        
-<button type="submit">Add entry</button>
-</form>
-        </div>
-    )
+      <div className={styles.form__row }>
+        <label>Title:</label>
+          <input type="text" style={{width:"100%",backgroundColor:"#DDCCCC"}} value={title} onChange={handleTitleChange} placeholder='Enter journal entry title'/>
+      </div>
+      </div>
+      <div style={{padding:" 0 16px"}}>
+      <div className={styles.form__row}>
+        <label>Description:</label>
+          <textarea
+        rows={9} 
+        cols={45} 
+        value={description}
+        maxLength={500}
+        placeholder='Enter journal entry description'
+        onChange={handleDescriptionChange}
+      />
+      </div>
+      </div>
+      <div className='flex-1 justify-end	' style={{width:"100%",backgroundColor:"#B26161",padding:"55px 0",position:"fixed",bottom:"0px"}}>
+      <button className={styles.button__add} onClick={handleAddTopic}>Add entry</button>
+      </div>
+      <h2>Topics</h2>
+      <ul>
+        {topics.map(topic => (
+          <li key={topic.id}>
+            <strong>{topic.entryTitel}</strong>: {topic.context}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
 
-}
+export default JournalForm;

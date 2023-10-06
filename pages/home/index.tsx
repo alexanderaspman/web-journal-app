@@ -7,6 +7,7 @@ import Wrapper from '@/components/Wrapper'
 import styles from './home.module.scss'
 import Link from "next/link"
 import Trash from "@/assets/deletButton"
+import AddButton from '@/assets/addEntryButton'
 interface Data{
     id:number
     entryTitle:string
@@ -81,7 +82,7 @@ currentPage={currentPage}
 pageSize={pageSize} 
 onPageChange={onPageChange}
 /> 
-<span className="justify-self-end"><button>add entry</button></span></div>
+<span className="justify-self-end"><button><AddButton /></button></span></div>
 </div></Wrapper>)
 }
 export default JournalEntryList
