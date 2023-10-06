@@ -15,7 +15,7 @@ const pagesCount = Math.ceil(items/pageSize);
 {pages.map((page)=>{
     return(
 <li key={page}>
-    <button>
+    <button style={{margin:"0 10px"}}>
 <a onClick={()=>{ onPageChange(page)}}>
    {page}
 </a></button>

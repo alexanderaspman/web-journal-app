@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styles from './add.module.scss'
+import Link from 'next/link';
 interface Topic {
   id: number;
   entryTitel: string;
@@ -53,7 +54,7 @@ const JournalForm  = () => {
       </div>
       </div>
       <div className='flex-1 justify-end	' style={{width:"100%",backgroundColor:"#B26161",padding:"55px 0",position:"fixed",bottom:"0px"}}>
-      <button className={styles.button__add} onClick={handleAddTopic}>Add entry</button>
+      <Link href={`home`}><button className={styles.button__back} onClick={handleAddTopic}>To list</button> </Link> <button className={styles.button__add} onClick={handleAddTopic}>Add entry</button>
       </div>
       <h2>Topics</h2>
       <ul>

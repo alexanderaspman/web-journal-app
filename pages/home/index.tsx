@@ -82,7 +82,7 @@ currentPage={currentPage}
 pageSize={pageSize} 
 onPageChange={onPageChange}
 /> 
-<span className="justify-self-end"><button><AddButton /></button></span></div>
+<span className="justify-self-end"><button><Link href={`add-entry`}><AddButton /></Link></button></span></div>
 </div></Wrapper>)
 }
 export default JournalEntryList
